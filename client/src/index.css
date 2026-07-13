@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-body text-ink bg-paper antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+  :focus-visible {
+    outline: 2px solid #0F5257;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Ticket-stub perforation edge — the signature motif for a complaint record */
+  .ticket-stub {
+    position: relative;
+    background: #fff;
+    border: 1px solid #E4EEED;
+  }
+  .ticket-stub::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background-image: repeating-linear-gradient(to bottom, #C7D6D5 0, #C7D6D5 4px, transparent 4px, transparent 9px);
+  }
+
+  /* Rotated rubber-stamp status badge */
+  .stamp {
+    @apply font-mono text-[11px] tracking-widest uppercase font-semibold px-2.5 py-1 border-2 rounded-sm;
+    transform: rotate(-3deg);
+    display: inline-block;
+  }
+
+  .btn-primary {
+    @apply bg-pine text-white font-medium px-4 py-2.5 rounded-md hover:bg-pine-deep transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-white text-pine border border-pine/30 font-medium px-4 py-2.5 rounded-md hover:bg-pine-light transition-colors;
+  }
+  .input-field {
+    @apply w-full border border-slate/30 bg-white px-3.5 py-2.5 rounded-md text-sm focus:border-pine outline-none transition-colors placeholder:text-slate;
+  }
+  .label-text {
+    @apply block text-xs font-semibold uppercase tracking-wide text-slate mb-1.5;
+  }
+}
